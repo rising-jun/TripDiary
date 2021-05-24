@@ -24,10 +24,8 @@ final class TripViewModel: ViewModelType{
         }.disposed(by: disposeBag)
         
         input.addDiary?.filter{$0 == true}.subscribe(onNext: { touched in
-            if touched{
-                print("toucehd")
-                vcState.accept(VCState.writeView)
-            }
+            vcState.accept(VCState.writeView)
+            
         }).disposed(by: disposeBag)
         
         return Output(preparingView: preparingViews.asDriver(),
