@@ -19,7 +19,7 @@ class TripVC: BaseViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         view = self.v
-        
+        v.backgroundColor = .green
         
     }
     private let disposeBag = DisposeBag()
@@ -42,7 +42,9 @@ class TripVC: BaseViewController {
         }.disposed(by: disposeBag)
     
         output.moveToView?.filter{$0 == .writeView}.drive{ [weak self] _ in
-            self?.navigationController?.pushViewController(WriteVC(), animated: true)
+            let writeVC = WriteVC()
+            writeVC.modalPresentationStyle = .fullScreen
+            self?.navigationController?.pushViewController(writeVC, animated: true)
             
         }.disposed(by: disposeBag)
         

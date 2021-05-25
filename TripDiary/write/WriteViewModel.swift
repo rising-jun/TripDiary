@@ -15,23 +15,30 @@ final class WriteViewModel: ViewModelType{
     
     func transform(input: Input) -> Output {
         let preparingViews = BehaviorRelay(value: ReadyState.yet)
-        
+        let tapAddPhoto = BehaviorRelay(value: false)
         input.viewWillAppear?.filter{$0 == .viewWillAppear}.take(1).subscribe{
             preparingViews.accept(ReadyState.ready)
         }.disposed(by: disposeBag)
         
+        input.addPhotoBtn?.filter{$0 == true}.subscribe{
+            tapAddPhoto.accept(true)
+        }.disposed(by: disposeBag)
         
-        return Output(preparingView: preparingViews.asDriver())
+        
+        return Output(preparingView: preparingViews.asDriver(),
+                      presentToAddPhoto: tapAddPhoto.asDriver())
     }
     
     
     struct Input{
         var viewWillAppear: Observable<ViewLifeState>?
+        var addPhotoBtn: Observable<Bool>?
         
     }
     
     struct Output{
         var preparingView: Driver<ReadyState>?
+        var presentToAddPhoto: Driver<Bool>?
     }
     
 }
