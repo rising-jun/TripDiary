@@ -8,6 +8,7 @@
 import Foundation
 import RxViewController
 import RxSwift
+import RxGesture
 
 class WriteVC: BaseViewController {
     
@@ -18,9 +19,6 @@ class WriteVC: BaseViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        v.addPhotoBtn.rx.tap.bind { _ in
-            print("tap")
-        }.disposed(by: disposeBag)
         
     }
 
@@ -30,14 +28,15 @@ class WriteVC: BaseViewController {
     }
     
     private let disposeBag = DisposeBag()
+    private let viewModel = WriteViewModel()
     
     private lazy var input = WriteViewModel
         .Input(viewWillAppear: self.rx.viewWillAppear
                                 .map{_ in return ViewLifeState.viewWillAppear},
-               addPhotoBtn: v.addPhotoBtn.rx.tap.map{return true})
+               addPhotoBtn: v.addPhotoBtn.rx.tap.map{return WriteButtonTap.addPhotoAction}.asObservable())
 
     private lazy var output = viewModel.transform(input: input)
-    private let viewModel = WriteViewModel()
+    
     
     let categoryDelegate = CategoryCollection()
     
@@ -56,8 +55,14 @@ class WriteVC: BaseViewController {
             
         }.disposed(by: disposeBag)
     
-        output.presentToAddPhoto?.filter{$0 == true}.drive{ [weak self] _ in
+        output.action?.drive{ [weak self] state in
             guard let self = self else { return }
+            switch state{
+            case .chosePhoto:
+                print("choosephoto")
+            case .none:
+                print("none")
+            }
             print("present To add Photo")
             
         }.disposed(by: disposeBag)

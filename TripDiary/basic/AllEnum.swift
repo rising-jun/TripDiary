@@ -26,3 +26,13 @@ enum VCState{
     case tripView
     case writeView
 }
+
+enum WriteButtonTap{
+    case addPhotoAction
+    case writeState
+}
+
+enum WriteState{
+    case chosePhoto
+    case none
+}

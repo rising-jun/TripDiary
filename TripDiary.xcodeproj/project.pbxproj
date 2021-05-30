@@ -19,6 +19,7 @@
 		7253EBDD265B966200E6FB35 /* WriteVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7253EBDC265B966200E6FB35 /* WriteVC.swift */; };
 		7253EBDF265B967800E6FB35 /* WriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7253EBDE265B967800E6FB35 /* WriteView.swift */; };
 		7253EBE1265B99D500E6FB35 /* AllEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7253EBE0265B99D500E6FB35 /* AllEnum.swift */; };
+		7254CFB82663903C0030A256 /* CameraDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7254CFB72663903C0030A256 /* CameraDelegate.swift */; };
 		7288706F265B6FF20007C923 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7288706E265B6FF20007C923 /* AppDelegate.swift */; };
 		72887071265B6FF30007C923 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72887070265B6FF30007C923 /* SceneDelegate.swift */; };
 		72887073265B6FF30007C923 /* SplashVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72887072265B6FF30007C923 /* SplashVC.swift */; };
@@ -44,6 +45,7 @@
 		7253EBDC265B966200E6FB35 /* WriteVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteVC.swift; sourceTree = "<group>"; };
 		7253EBDE265B967800E6FB35 /* WriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteView.swift; sourceTree = "<group>"; };
 		7253EBE0265B99D500E6FB35 /* AllEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllEnum.swift; sourceTree = "<group>"; };
+		7254CFB72663903C0030A256 /* CameraDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraDelegate.swift; sourceTree = "<group>"; };
 		7288706B265B6FF20007C923 /* TripDiary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TripDiary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7288706E265B6FF20007C923 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		72887070265B6FF30007C923 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -111,11 +113,20 @@
 		7253EBDB265B964900E6FB35 /* write */ = {
 			isa = PBXGroup;
 			children = (
+				7254CFB6266390260030A256 /* camera */,
 				7253EBDC265B966200E6FB35 /* WriteVC.swift */,
 				7253EBDE265B967800E6FB35 /* WriteView.swift */,
 				7230C5BC265BA42A00A46942 /* WriteViewModel.swift */,
 			);
 			path = write;
+			sourceTree = "<group>";
+		};
+		7254CFB6266390260030A256 /* camera */ = {
+			isa = PBXGroup;
+			children = (
+				7254CFB72663903C0030A256 /* CameraDelegate.swift */,
+			);
+			path = camera;
 			sourceTree = "<group>";
 		};
 		72887062265B6FF20007C923 = {
@@ -316,6 +327,7 @@
 				72A575F5265CE5A300F77695 /* CategoryCell.swift in Sources */,
 				722A0338265B87B500D3C97D /* HomeView.swift in Sources */,
 				7253EBD6265B8A7300E6FB35 /* TripVC.swift in Sources */,
+				7254CFB82663903C0030A256 /* CameraDelegate.swift in Sources */,
 				7253EBE1265B99D500E6FB35 /* AllEnum.swift in Sources */,
 				7253EBDD265B966200E6FB35 /* WriteVC.swift in Sources */,
 				72A575F3265CE38B00F77695 /* DiaryInfo.swift in Sources */,

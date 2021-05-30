@@ -15,30 +15,42 @@ final class WriteViewModel: ViewModelType{
     
     func transform(input: Input) -> Output {
         let preparingViews = BehaviorRelay(value: ReadyState.yet)
-        let tapAddPhoto = BehaviorRelay(value: false)
-        input.viewWillAppear?.filter{$0 == .viewWillAppear}.take(1).subscribe{
+        let tapAction = BehaviorRelay(value: WriteState.none)
+        
+        input.viewWillAppear?.filter{$0 == .viewWillAppear}.distinctUntilChanged().subscribe{ _ in
+            print("ready")
             preparingViews.accept(ReadyState.ready)
         }.disposed(by: disposeBag)
         
-        input.addPhotoBtn?.filter{$0 == true}.subscribe{
-            tapAddPhoto.accept(true)
+        
+        input.addPhotoBtn?.subscribe{ action in
+            switch action.element{
+            case .addPhotoAction :
+                print("add photo Action")
+                tapAction.accept(WriteState.chosePhoto)
+                break
+            case .none:
+                print("none")
+            case .some(.writeState): break
+                
+            }
         }.disposed(by: disposeBag)
         
         
         return Output(preparingView: preparingViews.asDriver(),
-                      presentToAddPhoto: tapAddPhoto.asDriver())
+                      action: tapAction.asDriver())
     }
     
     
     struct Input{
         var viewWillAppear: Observable<ViewLifeState>?
-        var addPhotoBtn: Observable<Bool>?
+        var addPhotoBtn: Observable<WriteButtonTap>?
         
     }
     
     struct Output{
         var preparingView: Driver<ReadyState>?
-        var presentToAddPhoto: Driver<Bool>?
+        var action: Driver<WriteState>?
     }
     
 }

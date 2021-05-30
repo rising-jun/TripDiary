@@ -29,7 +29,7 @@ class WriteView: BaseView{
 
         addPhotoBtn.backgroundColor = .blue
         addPhotoBtn.snp.makeConstraints { make in
-            make.top.equalTo(self).offset(50)
+            make.top.equalTo(self).offset(200)
             make.width.equalTo(50)
             make.height.equalTo(30)
             make.leading.equalTo(15)
