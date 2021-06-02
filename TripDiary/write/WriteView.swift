@@ -11,6 +11,7 @@ import SnapKit
 
 class WriteView: BaseView{
     
+    lazy var tripImage = UIImageView()
     lazy var addPhotoBtn = UIButton()
     lazy var contents = UITextView()
     lazy var publicSet = UISwitch()
@@ -25,11 +26,19 @@ class WriteView: BaseView{
         super.setup()
         backgroundColor = .systemGray5
         
-        addSubViews(addPhotoBtn, contents, publicSet, categorySet, dateSet, publicLabel)
+        addSubViews(tripImage, addPhotoBtn, contents, publicSet, categorySet, dateSet, publicLabel)
 
+        tripImage.backgroundColor = .green
+        tripImage.snp.makeConstraints { make in
+            make.top.equalTo(self).offset(100)
+            make.width.equalTo(100)
+            make.height.equalTo(100)
+            make.leading.equalTo(15)
+        }
+        
         addPhotoBtn.backgroundColor = .blue
         addPhotoBtn.snp.makeConstraints { make in
-            make.top.equalTo(self).offset(200)
+            make.top.equalTo(tripImage.snp.bottom).offset(10)
             make.width.equalTo(50)
             make.height.equalTo(30)
             make.leading.equalTo(15)

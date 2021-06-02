@@ -26,7 +26,6 @@ final class WriteViewModel: ViewModelType{
         input.addPhotoBtn?.subscribe{ action in
             switch action.element{
             case .addPhotoAction :
-                print("add photo Action")
                 tapAction.accept(WriteState.chosePhoto)
                 break
             case .none:
